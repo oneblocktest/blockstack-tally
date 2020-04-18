@@ -22,8 +22,8 @@ export default  () => (
         </Col>
         <Col span={12}>
           <div>
-          <label>展示:</label>
-          <TextArea rows={6} />
+          <label>类别展示展示:</label>
+          <TextArea rows={18} />
           </div>
         </Col>
       </Row>

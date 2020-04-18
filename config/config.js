@@ -79,7 +79,7 @@ export default defineConfig({
             {
               path: '/Setcategory',
               name: '类别设置',
-              icon: 'smile',
+              icon: 'SettingOutlined',
               component: './Setcategory',
             },
             {

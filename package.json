@@ -58,6 +58,7 @@
     "antd": "^4.0.0",
     "bizcharts": "^3.5.3-beta.0",
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
+    "blockstack": "^21.0.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
     "lodash.debounce": "^4.0.8",

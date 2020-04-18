@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { Card, Typography, Alert, Row, Col } from 'antd';
+import { Card, Typography, Alert, Row, Col,Button, Table} from 'antd';
 import styles from './index.less';
 import Waterbill from './Waterbill';
 import Formdata from './Formdata';
@@ -81,11 +81,13 @@ export default () => (
       <div id="components-grid-demo-basic">
         <>
           <Row>
-            <Col span={16}>   </Col>
+            <Col span={16}> <Waterbill /> </Col>
             <Col span={8}> <Formdata /></Col>
           </Row>
         </>
       </div>
     </div>
+    <Button type="primary">保存</Button>
   </PageHeaderWrapper>
+
 );

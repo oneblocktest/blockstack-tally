@@ -24,7 +24,7 @@ export default  () => (
         <Col span={12}>
           <div>
           <label>展示:</label>
-          <TextArea rows={6} />
+          <TextArea rows={18} />
           </div>
         </Col>
       </Row>
