@@ -83,6 +83,12 @@ export default defineConfig({
               component: './Setcategory',
             },
             {
+              path: '/Testlogin',
+              name: 'test',
+              icon: 'SettingOutlined',
+              component: './Testlogin',
+            },
+            {
               component: './404',
             },
           ],

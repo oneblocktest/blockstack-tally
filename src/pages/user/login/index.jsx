@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link, connect } from 'umi';
 import LoginFrom from './components/Login';
 import styles from './style.less';
+import {UserSession, AppConfig } from 'blockstack';
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginFrom;
 

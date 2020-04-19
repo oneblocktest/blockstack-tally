@@ -91,18 +91,18 @@ class Waterbill extends React.Component {
     super(props);
     this.columns = [
       {
-        title: 'name',
-        dataIndex: 'name',
+        title: '日期',
+        dataIndex: 'date',
         width: '30%',
         editable: true,
       },
       {
-        title: 'age',
-        dataIndex: 'age',
+        title: '项目',
+        dataIndex: 'item',
       },
       {
-        title: 'address',
-        dataIndex: 'address',
+        title: '金额',
+        dataIndex: 'test',
       },
       {
         title: 'operation',
@@ -119,15 +119,15 @@ class Waterbill extends React.Component {
       dataSource: [
         {
           key: '0',
-          name: 'Edward King 0',
-          age: '32',
-          address: 'London, Park Lane no. 0',
+          date: 'Edward King 0',
+          item: '32',
+          test: 'London, Park Lane no. 0',
         },
         {
           key: '1',
-          name: 'Edward King 1',
-          age: '32',
-          address: 'London, Park Lane no. 1',
+          date: 'Edward King 0',
+          item: '32',
+          test: 'London, Park Lane no. 0',
         },
       ],
       count: 2,
