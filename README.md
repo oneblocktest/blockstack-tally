@@ -64,7 +64,7 @@ Tally旨在通过使用区块链技术，让用户方便地创建真正属于自
 * **首页**
 ![首页](./snapshot/welcome.png)
 * **类别页**
-![类别页](./snapshot/welcome.png)
+![类别页](./snapshot/setcategory.png)
 
 
 ## 数据结构定义
@@ -119,7 +119,7 @@ Tally旨在通过使用区块链技术，让用户方便地创建真正属于自
   ]
 }
 
-/*  流水账单 water-bill.json   限制内容类型设定  */
+/*  流水账单 waterbill.json   限制内容类型设定  */
 [
     {
         "date": "20200415",
