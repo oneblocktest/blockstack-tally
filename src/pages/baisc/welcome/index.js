@@ -6,6 +6,13 @@ import Formdata from "./fromdata";
 
 
 export default class Welcome extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+           waterbill:props.waterbill
+        }
+    }
 
     render() {
         return (
@@ -75,8 +82,8 @@ export default class Welcome extends Component {
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={16}><Waterbill /> </Col>
-                            <Col span={8}> <Formdata /> </Col>
+                            <Col span={16}><Waterbill waterbill={this.state.waterbill}  /> </Col>
+                            <Col span={8}> <Formdata handleSubmit={this.props.handleSubmit}/> </Col>
                         </Row>
                     </>
                 </div>

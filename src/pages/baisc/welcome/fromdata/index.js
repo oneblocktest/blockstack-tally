@@ -10,8 +10,9 @@ const layout = {
   },
   wrapperCol: {
     span: 16,
-  },
+  }
 };
+
 /* const validateMessages = {
   required: '${label} is required!',
   types: {
@@ -24,44 +25,19 @@ const layout = {
 }; */
 
 
-
-
-
 class Formdata extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.initialState = {
-      date: "",
-      item: "",
-      type: "",
-      amount: "",
-      card: ""
-    };
-
-    this.state = this.initialState;
-  }
-
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-  }
-  onFormSubmit() {
-   // event.preventDefault();
-  //  this.props.handleSubmit(this.state);
-    this.setState(this.initialState);
-}
-
-  
+  formRef = React.createRef();
 
   render() {
+    
+    const onFinish = values => {
+      this.props.handleSubmit(values)
+    //  console.log(values);
+      this.formRef.current.resetFields(); 
+    };
 
     return (
-      <Form {...layout} name="nest-messages"  >
+      <Form {...layout} ref={this.formRef} name="nest-messages" onFinish={onFinish} >
         <Form.Item
           name={['bill', 'date']}
           label="日期"
@@ -95,14 +71,24 @@ class Formdata extends Component {
         >
           <Input />
         </Form.Item>
-        <Form.Item name={['bill', 'aoumte']} label="金额">
+        <Form.Item name={['bill', 'aoumte']} label="金额"rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
           <Input />
         </Form.Item>
-        <Form.Item name={['bill', 'introduction']} label="账户">
+        <Form.Item name={['bill', 'card']} label="账户"rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
           <Input />
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit" >
+          <Button type="primary" htmlType="submit">
             Submit
         </Button>
         </Form.Item>

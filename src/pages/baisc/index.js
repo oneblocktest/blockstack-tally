@@ -20,7 +20,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 export default class BasicLayout extends Component {
     state = {
-        waterbill: [],
+        
         category: [],
         cardservices:[],
         savingMe: false,
@@ -41,7 +41,38 @@ export default class BasicLayout extends Component {
                   return avatarFallbackImage;
                 }, 
            },
-           page:"welcome"
+           page:"welcome",
+           waterbill: [
+            {
+                date: "20200420",
+                item: "加油",
+                type: "交通",
+                amount: "-200",
+                card: "农行"
+            },
+            {
+                date: "20200421",
+                item: "加油",
+                type: "交通",
+                amount: "-200",
+                card: "农行"
+            },
+            {
+                date: "20200422",
+                item: "加油",
+                type: "交通",
+                amount: "-200",
+                card: "农行"
+            },
+            {
+                date: "20200423",
+                item: "加油",
+                type: "交通",
+                amount: "-200",
+                card: "农行"
+            },
+        ],
+           
           };
 
     }
@@ -52,11 +83,16 @@ export default class BasicLayout extends Component {
               person: new Person(userSession.loadUserData().profile),
             });
           } 
- 
+
+    handleSubmit = bill => {
+            // console.log(bill);
+            this.setState({ waterbill: [...this.state.waterbill, bill] });
+         
+          }    
     
     pagezhuan(){
         if(this.state.page==="welcome"){
-            return  <Welcome />
+            return  <Welcome waterbill={this.state.waterbill} handleSubmit={this.handleSubmit} />
         } 
         else if(this.state.page==="Setcategory"){
             return  <Setcategory />

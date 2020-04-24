@@ -84,6 +84,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 
+
 class Waterbill extends React.Component {
   constructor(props) {
     super(props);
@@ -138,8 +139,26 @@ class Waterbill extends React.Component {
         },
       ],
       count: 2,
+      waterbill:props.waterbill
     };
   }
+  getdataSource(){   //变换dataSource数据格式
+    let data=this.state.waterbill;
+    let newsdata=[]
+    let j=0
+    /*  data=data.map((x,index)=>{
+      x.key=index
+      return x
+    }); */
+    for(let i=data.length-1;i>-1;i--){
+        newsdata[j]=data[i]
+        newsdata[j].key=j
+        j++
+    }
+    this.setState({count:newsdata.length})
+    this.setState({dataSource:newsdata})
+    }
+  
 
   handleDelete = key => {
     const dataSource = [...this.state.dataSource];
@@ -209,6 +228,11 @@ class Waterbill extends React.Component {
       </div>
     );
   }
+  componentWillMount() {
+    this.getdataSource()
+  } 
+
+
 }
 
 export default Waterbill
