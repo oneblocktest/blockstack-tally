@@ -32,7 +32,7 @@ class Formdata extends Component {
     
     const onFinish = values => {
       this.props.handleSubmit(values)
-    //  console.log(values);
+      console.log(values);
       this.formRef.current.resetFields(); 
     };
 
@@ -61,7 +61,7 @@ class Formdata extends Component {
           <Input />
         </Form.Item>
         <Form.Item
-          name={['bill', 'tpye']}
+          name={['bill', 'type']}
           label="类别"
           rules={[
             {
@@ -71,7 +71,7 @@ class Formdata extends Component {
         >
           <Input />
         </Form.Item>
-        <Form.Item name={['bill', 'aoumte']} label="金额"rules={[
+        <Form.Item name={['bill', 'amount']} label="金额"rules={[
             {
               required: true,
             },

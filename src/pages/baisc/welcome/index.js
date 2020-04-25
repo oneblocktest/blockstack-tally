@@ -9,9 +9,7 @@ export default class Welcome extends Component {
     constructor(props) {
         super(props);
     
-        this.state = {
-           waterbill:props.waterbill
-        }
+       
     }
 
     render() {
@@ -82,7 +80,7 @@ export default class Welcome extends Component {
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={16}><Waterbill waterbill={this.state.waterbill}  /> </Col>
+                            <Col span={16}><Waterbill waterbill={this.props.waterbill}  removeCharacter={this.props.removeCharacter}/> </Col>
                             <Col span={8}> <Formdata handleSubmit={this.props.handleSubmit}/> </Col>
                         </Row>
                     </>

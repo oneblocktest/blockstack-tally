@@ -10,6 +10,13 @@ import {
 import List from "./list"; */
 import Setcategory from "./Setcategory";
 import Welcome from "./welcome"
+import SearchQuery from "./SearchQuery"
+
+
+export const WATEBILL_FILENAME = 'waterbill.json'         //gaia保存路径
+export const CATEGORY_FILENAME = 'category.json' 
+export const CARDSERVICES_FILENAME = 'cardservices.json' 
+
 
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 const { Header, Footer, Sider, Content } = Layout;
@@ -19,7 +26,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 export default class BasicLayout extends Component {
-    state = {
+/*     state = {
         
         category: [],
         cardservices:[],
@@ -27,7 +34,7 @@ export default class BasicLayout extends Component {
         redirectToMe: false,
         option: {}
       };
-
+ */
 
     constructor(props) {
         super(props);
@@ -72,10 +79,25 @@ export default class BasicLayout extends Component {
                 card: "农行"
             },
         ],
+        //savingMe: false,
+      //  redirectToMe: false,
            
           };
 
     }
+
+
+  /*   saveMe(me,file) {
+        const { userSession } = this.props;
+        this.setState( {savingMe: true })
+        let test = JSON.stringify(me);
+        console.log(test);
+        const options = { encrypt: true }
+        userSession.putFile(file, JSON.stringify(me), options)
+          .finally(() => {
+            this.setState({ savingMe: false, redirectToMe: false })
+          })
+      } */
 
      componentWillMount() {
             const { userSession } = this.props;
@@ -85,19 +107,31 @@ export default class BasicLayout extends Component {
           } 
 
     handleSubmit = bill => {
-            // console.log(bill);
-            this.setState({ waterbill: [...this.state.waterbill, bill] });
+            
+            this.setState({ waterbill: [...this.state.waterbill, bill.bill]});
+            console.log(this.state);
          
-          }    
+          } 
+    
+    removeCharacter = index => {
+            const { waterbill } = this.state
+            index=waterbill.length-index-1
+            console.log(index)
+            this.setState({
+                waterbill:waterbill.filter((bill, i) => {
+                return i !== index
+              }),
+            })
+          }
     
     pagezhuan(){
         if(this.state.page==="welcome"){
-            return  <Welcome waterbill={this.state.waterbill} handleSubmit={this.handleSubmit} />
+            return  <Welcome waterbill={this.state.waterbill} handleSubmit={this.handleSubmit} removeCharacter={this.removeCharacter} />
         } 
         else if(this.state.page==="Setcategory"){
             return  <Setcategory />
-        }else{
-            return  <Welcome />
+        }else if(this.state.page==="SearchQuery"){
+            return  <SearchQuery />
         }
     }
 
@@ -115,7 +149,7 @@ export default class BasicLayout extends Component {
               <Menu theme="dark" mode="inline">
               
                     <Menu.Item onClick={() => this.setState({ page: "welcome" })}> <span>欢迎</span></Menu.Item>
-                    <Menu.Item onClick={() => this.setState({ page: "list" })}>查询搜索</Menu.Item>
+                    <Menu.Item onClick={() => this.setState({ page: "SearchQuery" })}>查询搜索</Menu.Item>
                     <Menu.Item onClick={() => this.setState({ page: "Setcategory" })}>设置</Menu.Item>
                 </Menu>
             </Sider>  
@@ -125,13 +159,14 @@ export default class BasicLayout extends Component {
                         <div>
                             <div style={{ background: '#fff', textAlign: 'right', padding: 0 }}>
                             <Avatar size="large" icon={<img src={person.avatarUrl()}/> } />
-                            <Button  onClick={handleSignOut.bind(this)} >Logout</Button>
+                            <Button type="primary"  onClick={handleSignOut.bind(this)} >Logout</Button>
                             </div>
                         </div>
                     </Header>
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                           {this.pagezhuan()}
+                    <Button type="primary">保存</Button>
             </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
@@ -140,5 +175,6 @@ export default class BasicLayout extends Component {
         )
     }
 }
+//onClick={this.saveMe(this.state.waterbill,WATEBILL_FILENAME)}
 
 

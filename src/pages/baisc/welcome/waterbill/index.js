@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React from 'react';
 //import styles from './index.css';
-import { Table, Input, Button, Popconfirm, Form } from 'antd';
+import { Table, Popconfirm } from 'antd';
 
-const EditableContext = React.createContext();
+/* const EditableContext = React.createContext();
 
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
@@ -82,10 +82,81 @@ const EditableCell = ({
   }
 
   return <td {...restProps}>{childNode}</td>;
+  
 };
+ */
 
 
-class Waterbill extends React.Component {
+const Waterbill =(props)=>{
+  //console.log(props)
+  const columns = [
+      {
+        title: '日期',
+        dataIndex: 'date',
+        
+      },
+      {
+        title: '项目',
+        width: '30%',
+        //editable: true,
+        dataIndex: 'item',
+      },
+      {
+        title: '类型',
+        dataIndex: 'type',
+      },
+      {
+        title: '金额',
+        dataIndex: 'amount',
+      },
+      {
+        title: '账户',
+        dataIndex: 'card',
+      },
+      {
+        title: 'operation',  //删除键
+        dataIndex: 'operation',
+        render: (text, record) =>
+          newsdata.length >= 1 ? (
+            <Popconfirm title="Sure to delete?" onConfirm={() => {props.removeCharacter(record.key)}}>
+              <a>Delete</a>
+            </Popconfirm>
+          ) : null,
+      },
+    ]
+    
+    //getdataSourc=(props)=>{   //变换dataSource数据格式
+    console.log(props.waterbill)
+      const data = props.waterbill
+      const newsdata = []
+      let j = 0
+    
+      for (let i = data.length - 1; i > -1; i--) {
+        newsdata[j] = data[i]
+        newsdata[j].key = j
+        j++
+      }
+      //this.setState({count:newsdata.length})
+      // this.setState({dataSource:newsdata})
+   //   return newsdata
+   // } 
+    
+      console.log(newsdata)
+    return (
+      <div>  
+       <Table
+          columns={columns}
+          dataSource={newsdata}
+          count={newsdata.length}
+        />
+      </div>
+    );
+  
+  
+}
+
+
+/* class Waterbill extends React.Component {
   constructor(props) {
     super(props);
     this.columns = [
@@ -142,21 +213,19 @@ class Waterbill extends React.Component {
       waterbill:props.waterbill
     };
   }
-  getdataSource(){   //变换dataSource数据格式
-    let data=this.state.waterbill;
+getdataSource = (props) =>{   //变换dataSource数据格式
+    let data=props.waterbill
     let newsdata=[]
     let j=0
-    /*  data=data.map((x,index)=>{
-      x.key=index
-      return x
-    }); */
+   
     for(let i=data.length-1;i>-1;i--){
         newsdata[j]=data[i]
         newsdata[j].key=j
         j++
     }
-    this.setState({count:newsdata.length})
-    this.setState({dataSource:newsdata})
+    //this.setState({count:newsdata.length})
+   // this.setState({dataSource:newsdata})
+    return newsdata
     }
   
 
@@ -222,17 +291,17 @@ class Waterbill extends React.Component {
           components={components}
           rowClassName={() => 'editable-row'}
           bordered
-          dataSource={dataSource}
-          columns={columns}
+          dataSource={getdataSource()}
+          columns={getdataSource().length}
         />
       </div>
     );
   }
-  componentWillMount() {
+   componentWillMount() {
     this.getdataSource()
-  } 
+  }  
 
 
 }
-
+ */
 export default Waterbill
