@@ -130,6 +130,14 @@ export default class BasicLayout extends Component {
             });
           } 
 
+    sethandlecatchange = setting =>{                          //设置类别
+      this.setState({ category:setting});
+      console.log(this.state)
+    }     
+    sethandlecardchange = setting =>{                         //设置账户
+      this.setState({ cardservices:setting});
+    }     
+
     handleSubmit = bill => {
             
             this.setState({ waterbill: [...this.state.waterbill, bill.bill]});
@@ -153,7 +161,10 @@ export default class BasicLayout extends Component {
             return  <Welcome waterbill={this.state.waterbill} handleSubmit={this.handleSubmit} removeCharacter={this.removeCharacter} />
         } 
         else if(this.state.page==="Setcategory"){
-            return  <Setcategory category={this.state.category} cardservices={this.state.cardservices}  />
+            return  <Setcategory category={this.state.category} 
+                      cardservices={this.state.cardservices} 
+                      sethandlecatchange={this.sethandlecatchange} 
+                      sethandlecardchange={this.sethandlecatchange} />
         }else if(this.state.page==="SearchQuery"){
             return  <SearchQuery />
         }
@@ -193,7 +204,7 @@ export default class BasicLayout extends Component {
                     <Button type="primary" onClick={()=>this.saveMe(this.state.waterbill,WATEBILL_FILENAME)}>保存</Button>
             </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>Blockstack-Tally ©2020 Created by Tally Team</Footer>
                 </Layout>
             </Layout>
         )

@@ -18,8 +18,11 @@ export default class Setcategory extends Component {
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={12}>  <Cardservices cardservices={this.props.cardservices }/></Col>
-                            <Col span={12}>  <Category category={this.props.category} /></Col>
+                            <Col span={12}>  <Cardservices cardservices={this.props.cardservices }
+                                                
+                                                sethandlecardchange={this.props.sethandlecatchange} 
+                                                /></Col>
+                            <Col span={12}>  <Category category={this.props.category} sethandlecatchange={this.props.sethandlecatchange}  /></Col>
                         </Row>
                     </>
                 </div>

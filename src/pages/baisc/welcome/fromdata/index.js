@@ -32,7 +32,7 @@ class Formdata extends Component {
     
     const onFinish = values => {
       this.props.handleSubmit(values)
-      console.log(values);
+     // console.log(values);
       this.formRef.current.resetFields(); 
     };
 
