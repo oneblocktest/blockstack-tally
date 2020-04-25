@@ -81,7 +81,7 @@ export default class Welcome extends Component {
                     <>
                         <Row>
                             <Col span={16}><Waterbill waterbill={this.props.waterbill}  removeCharacter={this.props.removeCharacter}/> </Col>
-                            <Col span={8}> <Formdata handleSubmit={this.props.handleSubmit}/> </Col>
+                            <Col span={8}> <Formdata handleSubmit={this.props.handleSubmit} /> </Col>
                         </Row>
                     </>
                 </div>

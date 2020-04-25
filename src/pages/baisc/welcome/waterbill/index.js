@@ -125,23 +125,17 @@ const Waterbill =(props)=>{
       },
     ]
     
-    //getdataSourc=(props)=>{   //变换dataSource数据格式
-    console.log(props.waterbill)
-      const data = props.waterbill
+      
+    
+      const data = props.waterbill //变换dataSource数据格式
       const newsdata = []
       let j = 0
-    
       for (let i = data.length - 1; i > -1; i--) {
         newsdata[j] = data[i]
         newsdata[j].key = j
         j++
       }
-      //this.setState({count:newsdata.length})
-      // this.setState({dataSource:newsdata})
-   //   return newsdata
-   // } 
-    
-      console.log(newsdata)
+     
     return (
       <div>  
        <Table

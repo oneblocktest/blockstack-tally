@@ -5,7 +5,14 @@ import { Row, Col } from "antd";
 
 const { TextArea } = Input;
 
-export default  () => (
+const  Cardservices=(props) =>{
+  const cardservices=props.cardservices
+  let cardservices_text=JSON.stringify(cardservices,null, 2)
+  console.log(cardservices_text)
+
+
+
+return(
   <div className={styles.container}>  
     <div id="components-grid-demo-basic">
       <>
@@ -24,7 +31,7 @@ export default  () => (
         <Col span={12}>
           <div>
           <label>展示:</label>
-          <TextArea rows={18} />
+          <TextArea rows={18} defaultValue={cardservices_text} />
           </div>
         </Col>
       </Row>
@@ -32,6 +39,10 @@ export default  () => (
     </div>
   </div>
 );
+}
+
+export default Cardservices
+
 
 
 

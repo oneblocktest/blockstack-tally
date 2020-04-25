@@ -7,7 +7,12 @@ import { Row, Col } from "antd";
 
 const { TextArea } = Input;
 
-export default  () => (
+const Category=(props) =>{ 
+  const category=props.category
+  let category_text=JSON.stringify(category,null, 2)
+  console.log(category_text)
+  
+  return (
   <div className={styles.container}>
     <div id="components-grid-demo-basic">
       <Row>
@@ -23,7 +28,7 @@ export default  () => (
         <Col span={12}>
           <div>
           <label>类别展示展示:</label>
-          <TextArea rows={18} />
+          <TextArea rows={18} defaultValue={category_text} />
           </div>
         </Col>
       </Row>
@@ -31,6 +36,7 @@ export default  () => (
   </div>
 );
 
+}
 
-
+export default  Category
 

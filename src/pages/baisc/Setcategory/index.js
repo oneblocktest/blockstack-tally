@@ -5,15 +5,21 @@ import Cardservices from './Cardservices';
 import Category from './Category';
 
 export default class Setcategory extends Component {
+    constructor(props) {
+        super(props);
+    
+       
+    }
 
     render() {
+     
         return (
             <div className={styles.container}>
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={12}>  <Cardservices /></Col>
-                            <Col span={12}>  <Category /></Col>
+                            <Col span={12}>  <Cardservices cardservices={this.props.cardservices }/></Col>
+                            <Col span={12}>  <Category category={this.props.category} /></Col>
                         </Row>
                     </>
                 </div>
