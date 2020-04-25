@@ -7,9 +7,7 @@ import Formdata from "./fromdata";
 
 export default class Welcome extends Component {
     constructor(props) {
-        super(props);
-    
-       
+        super(props)
     }
 
     render() {

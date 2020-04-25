@@ -4,19 +4,18 @@ import 'antd/dist/antd.css';
 import './index.css';
 import {
     Person,
+    AppConfig
   } from 'blockstack';
-/* ";
+ 
 
-import List from "./list"; */
 import Setcategory from "./Setcategory";
 import Welcome from "./welcome"
 import SearchQuery from "./SearchQuery"
-
-
+export const appConfig = new AppConfig(['store_write', 'publish_data'])
 export const WATEBILL_FILENAME = 'waterbill.json'         //gaia保存路径
 export const CATEGORY_FILENAME = 'category.json' 
 export const CARDSERVICES_FILENAME = 'cardservices.json' 
-
+export const MYTALLY_FILENAME = "MYTALLY.json"
 
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 const { Header, Footer, Sider, Content } = Layout;
@@ -26,8 +25,6 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 export default class BasicLayout extends Component {
-
-
 
     constructor(props) {
         super(props);
@@ -115,7 +112,7 @@ export default class BasicLayout extends Component {
           },
         savingMe: false,
         redirectToMe: false,
-       // option: {}  
+        option: {}  
           };
 
     }
@@ -128,11 +125,13 @@ export default class BasicLayout extends Component {
             this.setState({
               person: new Person(userSession.loadUserData().profile),
             });
+           // console.log(this.state.person)
+           this.loadMe()
           } 
 
     sethandlecatchange = setting =>{                          //设置类别
       this.setState({ category:setting});
-      console.log(this.state)
+     // console.log(this.state)
     }     
     sethandlecardchange = setting =>{                         //设置账户
       this.setState({ cardservices:setting});
@@ -171,7 +170,7 @@ export default class BasicLayout extends Component {
     }
 
     render() {
-        const { handleSignOut, userSession } = this.props;
+        const { handleSignOut } = this.props;
         const { person } = this.state;
         return (
             <Layout>
@@ -201,7 +200,7 @@ export default class BasicLayout extends Component {
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                           {this.pagezhuan()}
-                    <Button type="primary" onClick={()=>this.saveMe(this.state.waterbill,WATEBILL_FILENAME)}>保存</Button>
+                    <Button type="primary" onClick={()=>this.saveMe()}>保存</Button>
             </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>Blockstack-Tally ©2020 Created by Tally Team</Footer>
@@ -210,16 +209,43 @@ export default class BasicLayout extends Component {
         )
     }
 
-    saveMe(me, file) {                    //保存上传gaia
-        console.log(JSON.stringify(me))
+
+    loadMe() {
+      const { userSession } = this.props;
+      const options = { decrypt: false}
+      userSession.getFile(MYTALLY_FILENAME, options)
+        .then((content) => {
+          if (content) {
+            const mytally = JSON.parse(content)
+            this.setState({ waterbill:mytally.waterbill, redirectToMe: false })
+            this.setState({ category:mytally.category, redirectToMe: false })
+            this.setState({ cardservice:mytally.waterbill, redirectToMe: false })
+            
+  
+            
+          } else {
+           // const me = null
+           // this.setState({ character:me,redirectToMe: true })
+          }
+        })
+    } 
+
+
+    saveMe() {                    //保存上传gaia
+       // console.log(JSON.stringify(me))
+      const mytally={
+         waterbill:this.state.waterbill,
+         category:this.state.category,
+         cardservices:this.state.cardservice
+      }
         const { userSession } = this.props;
         this.setState({ savingMe: true })
         const options = { encrypt: false }
-        
-        userSession.putFile(file, JSON.stringify(me), options)
-            .finally(() => {
-                this.setState({ savingMe: false, redirectToMe: false })
-            })
+        console.log(JSON.stringify(mytally))     
+       userSession.putFile(MYTALLY_FILENAME, JSON.stringify(mytally), options)
+          .finally(() => {
+             this.setState({ savingMe: false, redirectToMe: false })
+           }) 
     } 
 }
 //onClick={this.saveMe(this.state.waterbill,WATEBILL_FILENAME)}
