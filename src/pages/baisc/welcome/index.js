@@ -5,10 +5,12 @@ import Waterbill from "./waterbill";
 import Formdata from "./fromdata";
 
 
+
+const mydata="本月余额：1000"
 export default class Welcome extends Component {
-    constructor(props) {
+   /*  constructor(props) {
         super(props)
-    }
+    } */
 
     render() {
         return (
@@ -19,7 +21,7 @@ export default class Welcome extends Component {
                         <Row>
                             <Col span={6}>
                                 <Card
-                                    title="本月余额"
+                                    title={mydata}
                                     extra={<a href="#">More</a>}
                                     style={{
                                         width: 260,

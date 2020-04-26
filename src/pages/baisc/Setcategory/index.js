@@ -5,11 +5,11 @@ import Cardservices from './Cardservices';
 import Category from './Category';
 
 export default class Setcategory extends Component {
-    constructor(props) {
+  /*   constructor(props) {
         super(props);
     
        
-    }
+    } */
 
     render() {
      

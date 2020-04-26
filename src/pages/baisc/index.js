@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu,Button,Avatar  } from 'antd';
+import { Layout, Menu,Button,Avatar,message  } from 'antd';
 import 'antd/dist/antd.css';
 import './index.css';
 import {
@@ -34,7 +34,7 @@ export default class BasicLayout extends Component {
                 name() {
               return 'Anonymous';
             },
-                avatarUrl() {
+               avatarUrl() {
                   return avatarFallbackImage;
                 }, 
            },
@@ -70,43 +70,43 @@ export default class BasicLayout extends Component {
             },
         ],
         category: {
-            "revenue":[
-                {"name":"餐饮"},
-                {"name":"娱乐"},
-                {"name":"学习"},
-                {"name":"交通"},
-                {"name":"通讯"},
-                {"name":"其他"},
+            revenue:[
+                {name:"餐饮"},
+                {name:"娱乐"},
+                {name:"学习"},
+                {name:"交通"},
+                {name:"通讯"},
+                {name:"其他"},
             ],
-            "payment":[
-                 {"name":"工资"},
-                 {"name":"业务"},
-                 {"name":"投资"}
+            payment:[
+                 {name:"工资"},
+                 {name:"业务"},
+                 {name:"投资"}
             ],
-            "disregard":[
-                 {"name":"信用卡还款"},
-                 {"name":"卡内转账"},
-                 {"name":"还贷款"},
+            disregard:[
+                 {name:"信用卡还款"},
+                 {name:"卡内转账"},
+                 {name:"还贷款"},
             ]
         },
         cardservices:{
             credit: [ //贷记账户
               {
-                "card": "花呗",
-                "update": "31", //信用卡账单日期
-                "balance": "-11"
+                card: "花呗",
+                update: "31", //信用卡账单日期
+                balance: "-11"
               }
             ],
-            "debit": [ //借记账户
+            debit: [ //借记账户
               {
-                "card": "余额宝",
-                "update": "31",
-                "balance": "100"
+                card: "余额宝",
+                update: "31",
+                balance: "100"
               },
               {
-                "card": "现金",
-                "update": "31",
-                "balance": "200"
+                card: "现金",
+                update: "31",
+                balance: "200"
               }
             ]
           },
@@ -125,7 +125,7 @@ export default class BasicLayout extends Component {
             this.setState({
               person: new Person(userSession.loadUserData().profile),
             });
-           // console.log(this.state.person)
+           console.log(this.state.person)
            this.loadMe()
           } 
 
@@ -189,13 +189,10 @@ export default class BasicLayout extends Component {
             </Sider>  
                 <Layout >
                     <Header style={{ background: '#fff', textAlign: 'center', padding: 0 }}>
-                  
-                        <div>
                             <div style={{ background: '#fff', textAlign: 'right', padding: 0 }}>
                             <Avatar size="large" icon={<img src={person.avatarUrl()}/> } />
                             <Button type="primary"  onClick={handleSignOut.bind(this)} >Logout</Button>
-                            </div>
-                        </div>
+                            </div>                   
                     </Header>
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
@@ -217,15 +214,19 @@ export default class BasicLayout extends Component {
         .then((content) => {
           if (content) {
             const mytally = JSON.parse(content)
-            this.setState({ waterbill:mytally.waterbill, redirectToMe: false })
-            this.setState({ category:mytally.category, redirectToMe: false })
-            this.setState({ cardservice:mytally.waterbill, redirectToMe: false })
-            
-  
-            
+            this.setState({ waterbill:mytally.waterbill, category:mytally.category,cardservice:mytally.waterbill,redirectToMe: false })
+         
           } else {
-           // const me = null
-           // this.setState({ character:me,redirectToMe: true })
+            const me =  [
+              {
+                  date: "20200420",
+                  item: "数据加载不成功",
+                  type: "交通",
+                  amount: "-100",
+                  card: "农行"
+              }
+            ]
+            this.setState({ waterbill:me,redirectToMe: true })
           }
         })
     } 
@@ -245,6 +246,7 @@ export default class BasicLayout extends Component {
        userSession.putFile(MYTALLY_FILENAME, JSON.stringify(mytally), options)
           .finally(() => {
              this.setState({ savingMe: false, redirectToMe: false })
+             message.success('保存成功')
            }) 
     } 
 }
