@@ -72,15 +72,15 @@ Tally旨在通过使用区块链技术，让用户方便地创建真正属于自
 /*设置类别 Setcategory  */
 /*收入与支出类别 category.json 不限制内容设定，限制结构设定 */
 {
-    "revenue":[
+    "payment":[
         {"name":"餐饮"},
         {"name":"娱乐"},
         {"name":"学习"},
         {"name":"交通"},
         {"name":"通讯"},
-        {"name":"其他"},
+        {"name":"其他"}
     ],
-    "payment":[
+    "revenue":[
          {"name":"工资"},
          {"name":"业务"},
          {"name":"投资"}
@@ -88,7 +88,7 @@ Tally旨在通过使用区块链技术，让用户方便地创建真正属于自
     "disregard":[
          {"name":"信用卡还款"},
          {"name":"卡内转账"},
-         {"name":"还贷款"},
+         {"name":"还贷款"}
     ]
 }
 /*账户类别 cardservices.json 不限制内容设定，限制结构设定 */

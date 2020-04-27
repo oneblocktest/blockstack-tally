@@ -29,7 +29,7 @@ export default class Welcome extends Component {
                                         width: 260,
                                     }}
                                 >
-                                {/* <Piechartdata />  */}
+                                {/*  <Piechartdata />   */}
                                 </Card>
                             </Col>
                             <Col span={6}>
@@ -77,7 +77,11 @@ export default class Welcome extends Component {
                     <>
                         <Row>
                             <Col span={16}><Waterbill waterbill={this.props.waterbill}  removeCharacter={this.props.removeCharacter}/> </Col>
-                            <Col span={8}> <Formdata handleSubmit={this.props.handleSubmit} /> </Col>
+                            <Col span={8}> <Formdata 
+                            handleSubmit={this.props.handleSubmit} 
+                            category={this.props.category}
+                            cardservices={this.props.cardservices}
+                             /> </Col>
                         </Row>
                     </>
                 </div>

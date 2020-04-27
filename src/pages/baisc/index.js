@@ -70,7 +70,7 @@ export default class BasicLayout extends Component {
             },
         ],
         category: {
-            revenue:[
+          payment:[
                 {name:"餐饮"},
                 {name:"娱乐"},
                 {name:"学习"},
@@ -78,7 +78,7 @@ export default class BasicLayout extends Component {
                 {name:"通讯"},
                 {name:"其他"},
             ],
-            payment:[
+            revenue:[
                  {name:"工资"},
                  {name:"业务"},
                  {name:"投资"}
@@ -131,22 +131,48 @@ export default class BasicLayout extends Component {
 
     sethandlecatchange = setting =>{                          //设置类别
       this.setState({ category:setting});
+      message.success('提交成功')
      // console.log(this.state)
     }     
     sethandlecardchange = setting =>{                         //设置账户
       this.setState({ cardservices:setting});
+      message.success('提交成功')
     }     
 
     handleSubmit = bill => {
             
             this.setState({ waterbill: [...this.state.waterbill, bill.bill]});
+            let newcardservices=this.state.cardservices
+            for(let x in newcardservices.debit ){
+                  if(bill.bill.card==newcardservices.debit[x].card){
+                    console.log(newcardservices.debit[x].balance)
+                    console.log(bill.bill.amount)
+                    newcardservices.debit[x].balance=parseFloat(newcardservices.debit[x].balance)+parseFloat(bill.bill.amount)
+                    
+                   this.setState({cardservices:newcardservices});
+                    console.log(this.state)
+                  }
+            }
+           // this.setState({ cardservices:newcardservices});
+                 //   console.log(JSON.stringify(this.state))
          //   console.log(this.state);
          
           } 
     
     removeCharacter = index => {
             const { waterbill } = this.state
+            let newcardservices=this.state.cardservices
             index=waterbill.length-index-1
+            for(let x in newcardservices.debit ){
+              if(waterbill[index].card==newcardservices.debit[x].card){
+                console.log(newcardservices.debit[x].balance)
+                console.log(waterbill[index].amount)
+                newcardservices.debit[x].balance=parseFloat(newcardservices.debit[x].balance)-parseFloat(waterbill[index].amount)
+                
+               this.setState({cardservices:newcardservices});
+                console.log(this.state)
+              }
+        }
            // console.log(index)
             this.setState({
                 waterbill:waterbill.filter((bill, i) => {
@@ -157,13 +183,18 @@ export default class BasicLayout extends Component {
     
     pagezhuan(){
         if(this.state.page==="welcome"){
-            return  <Welcome waterbill={this.state.waterbill} handleSubmit={this.handleSubmit} removeCharacter={this.removeCharacter} />
+            return  <Welcome waterbill={this.state.waterbill} 
+                      handleSubmit={this.handleSubmit} 
+                      removeCharacter={this.removeCharacter} 
+                      category={this.state.category}
+                      cardservices={this.state.cardservices}
+                      />
         } 
         else if(this.state.page==="Setcategory"){
             return  <Setcategory category={this.state.category} 
                       cardservices={this.state.cardservices} 
                       sethandlecatchange={this.sethandlecatchange} 
-                      sethandlecardchange={this.sethandlecatchange} />
+                      sethandlecardchange={this.sethandlecardchange} />
         }else if(this.state.page==="SearchQuery"){
             return  <SearchQuery />
         }
@@ -210,11 +241,13 @@ export default class BasicLayout extends Component {
     loadMe() {
       const { userSession } = this.props;
       const options = { decrypt: false}
+     
       userSession.getFile(MYTALLY_FILENAME, options)
         .then((content) => {
+       // console.log(content)
           if (content) {
             const mytally = JSON.parse(content)
-            this.setState({ waterbill:mytally.waterbill, category:mytally.category,cardservice:mytally.waterbill,redirectToMe: false })
+            this.setState({ waterbill:mytally.waterbill, category:mytally.category,cardservices:mytally.cardservices,redirectToMe: false })
          
           } else {
             const me =  [
@@ -237,7 +270,7 @@ export default class BasicLayout extends Component {
       const mytally={
          waterbill:this.state.waterbill,
          category:this.state.category,
-         cardservices:this.state.cardservice
+         cardservices:this.state.cardservices
       }
         const { userSession } = this.props;
         this.setState({ savingMe: true })
