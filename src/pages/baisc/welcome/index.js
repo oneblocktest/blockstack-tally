@@ -3,6 +3,8 @@ import styles from './index.less';
 import { Row, Col, Card } from "antd";
 import Waterbill from "./waterbill";
 import Formdata from "./fromdata";
+//import Piechartdata from "./piechartdata";
+import  Piechartdata from "./piechartdata";
 
 
 
@@ -27,9 +29,7 @@ export default class Welcome extends Component {
                                         width: 260,
                                     }}
                                 >
-                                    <p>Card content</p>
-                                    <p>Card content</p>
-                                    <p>Card content</p>
+                                {/* <Piechartdata />  */}
                                 </Card>
                             </Col>
                             <Col span={6}>
@@ -53,9 +53,7 @@ export default class Welcome extends Component {
                                         width:260,
                                     }}
                                 >
-                                    <p>收入情况</p>
-                                    <p>收入情况</p>
-                                    <p>收入情况</p>
+                                 
                                 </Card>
                             </Col>
                             <Col span={6}>
@@ -66,9 +64,7 @@ export default class Welcome extends Component {
                                         width: 260,
                                     }}
                                 >
-                                    <p>收入情况</p>
-                                    <p>收入情况</p>
-                                    <p>收入情况</p>
+                                 
                                 </Card>
                             </Col>
                         </Row>
