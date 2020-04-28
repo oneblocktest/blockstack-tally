@@ -145,12 +145,12 @@ export default class BasicLayout extends Component {
             let newcardservices=this.state.cardservices
             for(let x in newcardservices.debit ){
                   if(bill.bill.card==newcardservices.debit[x].card){
-                    console.log(newcardservices.debit[x].balance)
-                    console.log(bill.bill.amount)
+                    //console.log(newcardservices.debit[x].balance)
+                   // console.log(bill.bill.amount)
                     newcardservices.debit[x].balance=parseFloat(newcardservices.debit[x].balance)+parseFloat(bill.bill.amount)
                     
                    this.setState({cardservices:newcardservices});
-                    console.log(this.state)
+                   // console.log(this.state)
                   }
             }
            // this.setState({ cardservices:newcardservices});
@@ -196,7 +196,9 @@ export default class BasicLayout extends Component {
                       sethandlecatchange={this.sethandlecatchange} 
                       sethandlecardchange={this.sethandlecardchange} />
         }else if(this.state.page==="SearchQuery"){
-            return  <SearchQuery />
+            return  <SearchQuery 
+            waterbill={this.state.waterbill}
+            cardservices={this.state.cardservices}  />
         }
     }
 

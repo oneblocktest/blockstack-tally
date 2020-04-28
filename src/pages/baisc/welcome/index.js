@@ -3,18 +3,20 @@ import styles from './index.less';
 import { Row, Col, Card } from "antd";
 import Waterbill from "./waterbill";
 import Formdata from "./fromdata";
+import { getbalance } from "./models/getdatamodel.js"
 //import Piechartdata from "./piechartdata";
 import  Piechartdata from "./piechartdata";
 
 
 
-const mydata="本月余额：1000"
 export default class Welcome extends Component {
    /*  constructor(props) {
         super(props)
     } */
 
     render() {
+
+        const mydata="本月余额：" + getbalance(this.props.cardservices.debit).balancetotal
         return (
         <div>
             <div className={styles.container}>
@@ -29,7 +31,7 @@ export default class Welcome extends Component {
                                         width: 260,
                                     }}
                                 >
-                                {/*  <Piechartdata />   */}
+                                  <Piechartdata chartdata={getbalance(this.props.cardservices.debit).chartdata}/>  
                                 </Card>
                             </Col>
                             <Col span={6}>

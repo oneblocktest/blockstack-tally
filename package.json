@@ -9,6 +9,8 @@
     "antd": "^4.1.4",
     "bizcharts": "^4.0.1",
     "blockstack": "^21.0.0",
+    "echarts": "^4.7.0",
+    "echarts-for-react": "^2.0.15-beta.1",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

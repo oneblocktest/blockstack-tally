@@ -8,6 +8,12 @@ import Chartdata from "./chartdata";
 
 
 export default class Setcategory extends Component {
+     constructor(props) {
+        super(props)
+        this.state={
+            waterbill:props.waterbill
+        }
+    }  
 
     render() {
         return (
@@ -23,7 +29,7 @@ export default class Setcategory extends Component {
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={18}> <Tabledata /> </Col>
+                            <Col span={18}> <Tabledata weterbill={this.state.waterbill}/> </Col>
                             <Col span={6}> <Fromdata /> </Col>
                             
                         </Row>

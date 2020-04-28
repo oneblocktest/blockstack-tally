@@ -32,18 +32,18 @@ const Tabledata =(props)=>{
         dataIndex: 'card',
       },
     ]
-    
-    const newsdata = []
-    
-    /*   const data = props.waterbill //变换dataSource数据格式
-      const newsdata = []
+    const newsdata =[]
+  /*    // let data=[]
+      const data = props.waterbill //变换dataSource数据格式
+      const newsdata =[]
       let j = 0
+     // if(data.length>0){
       for (let i = data.length - 1; i > -1; i--) {
         newsdata[j] = data[i]
         newsdata[j].key = j
         j++
-      } */
-     
+      }
+   // } */
     return (
       <div>  
        <Table
