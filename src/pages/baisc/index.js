@@ -121,10 +121,10 @@ export default class BasicLayout extends Component {
 
 
      componentWillMount() {
-            const { userSession } = this.props;
-           this.setState({
+          //  const { userSession } = this.props;
+         /*   this.setState({
              person: new Person(userSession.loadUserData().profile),
-            });
+            }); */
           // console.log(this.state.person)
            this.loadMe()
           } 
@@ -250,7 +250,9 @@ export default class BasicLayout extends Component {
           if (content) {
             const mytally = JSON.parse(content)
             this.setState({ waterbill:mytally.waterbill, category:mytally.category,cardservices:mytally.cardservices,redirectToMe: false })
-         
+            this.setState({
+              
+             });
           } else {
             const me =  [
               {
@@ -263,7 +265,10 @@ export default class BasicLayout extends Component {
             ]
             this.setState({ waterbill:me,redirectToMe: true })
           }
-        })
+        },(err)=>{
+          console.log(err)
+          this.setState({redirectToMe: true })
+       }) 
     } 
 
 
