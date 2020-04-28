@@ -122,10 +122,10 @@ export default class BasicLayout extends Component {
 
      componentWillMount() {
             const { userSession } = this.props;
-            this.setState({
-              person: new Person(userSession.loadUserData().profile),
+           this.setState({
+             person: new Person(userSession.loadUserData().profile),
             });
-           console.log(this.state.person)
+          // console.log(this.state.person)
            this.loadMe()
           } 
 

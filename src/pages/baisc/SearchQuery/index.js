@@ -4,6 +4,8 @@ import { Row, Col } from "antd";
 import Fromdata from "./fromdata";
 import Tabledata from "./tabledata";
 import Chartdata from "./chartdata";
+import FetchDownloadJson from "./downfile/FetchDownloadJson.js";
+import FetchDownloadCsv from "./downfile/FetchDownloadCsv.js";
 
 
 
@@ -41,7 +43,10 @@ export default class Setcategory extends Component {
                     <>
                         <Row>
                             <Col span={18}> <Tabledata waterbill={this.state.waterbill}/> </Col>
-                            <Col span={6}> <Fromdata  searchhanld = { this.searchhanld }/></Col>
+                            <Col span={6}> <Fromdata  searchhanld = { this.searchhanld }/>
+                             {/*    <FetchDownloadJson content={this.props.waterbill}/>
+                                <FetchDownloadCsv content={this.props.waterbill}/> */}
+                            </Col>
                             
                         </Row>
                     </>

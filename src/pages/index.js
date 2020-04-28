@@ -4,7 +4,7 @@ import Login from './login';
 import Baics from './baisc';
 
 
-export const appConfig = new AppConfig(['store_write', 'publish_data'])  //app基本信息
+export const appConfig = new AppConfig()  //app基本信息
 export const userSession = new UserSession({ appConfig: appConfig })  //建立用户的session信息
 
 export default class Main extends Component{
@@ -23,12 +23,14 @@ handleSignIn(e) {                //登录改变userSession属性
 
   render() {
     return (
-        <div className="site-wrapper">
+        <div >
+     
    
           { !userSession.isUserSignedIn() ?
             <Login userSession={userSession} handleSignIn={ this.handleSignIn } />
             : <Baics userSession={userSession} handleSignOut={ this.handleSignOut } />
           }
+        
         </div>
      
     );

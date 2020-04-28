@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { Button } from 'antd';
+import  { Button,Row,Col } from 'antd';
 
 export default class Login extends Component {
 
@@ -8,14 +8,17 @@ export default class Login extends Component {
 
     return (
         <div>
+
+          <Row type="flex" justify="center" align="middle" style={{minHeight:'100vh'}}>
+            <img src="./blackgroud.jpg" />
       
-          <Button
+          <Button type="primary" shape="circle"
           
             onClick={ handleSignIn.bind(this) }
           >
             Sign In with Blockstack
           </Button>
-        
+          </Row>
       </div>
     );
   }
