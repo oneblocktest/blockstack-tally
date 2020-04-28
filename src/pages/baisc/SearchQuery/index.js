@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import styles from './index.css';
-import { Row, Col,Card } from "antd";
+import { Row, Col } from "antd";
 import Fromdata from "./fromdata";
 import Tabledata from "./tabledata";
 import Chartdata from "./chartdata";
@@ -14,8 +14,20 @@ export default class Setcategory extends Component {
             waterbill:props.waterbill
         }
     }  
+    
+    searchhanld= value =>{
+        const waterbill=this.props.waterbill
+        let searchdata=[]
+        for(let x in waterbill){
+            if(waterbill[x].item.indexOf(value) != -1 ){
+                searchdata.push( waterbill[x])
+            }
+        }
+        this.setState({waterbill:searchdata})
+    }
 
     render() {
+       // console.log(this.state.waterbill)
         return (
             <div className={styles.container}>
                 <div id="components-grid-demo-basic">
@@ -29,8 +41,8 @@ export default class Setcategory extends Component {
                 <div id="components-grid-demo-basic">
                     <>
                         <Row>
-                            <Col span={18}> <Tabledata weterbill={this.state.waterbill}/> </Col>
-                            <Col span={6}> <Fromdata /> </Col>
+                            <Col span={18}> <Tabledata waterbill={this.state.waterbill}/> </Col>
+                            <Col span={6}> <Fromdata  searchhanld = { this.searchhanld }/></Col>
                             
                         </Row>
                     </>

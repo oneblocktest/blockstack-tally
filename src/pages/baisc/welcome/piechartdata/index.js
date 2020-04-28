@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
-import echarts from 'echarts/lib/echarts'
+//import echarts from 'echarts/lib/echarts'
 
 
 
@@ -60,7 +60,9 @@ let option = {
 }
 render(){
     return (
+      //  <div style={ {width:240, Height:240} }>
         <ReactEcharts option={this.getOption()}/>
+     //   </div>
     )
 }
 

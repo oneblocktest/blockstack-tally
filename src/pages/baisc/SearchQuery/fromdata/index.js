@@ -31,7 +31,7 @@ class Formdata extends Component {
   render() {
     
     const onFinish = values => {
-      this.props.handleSubmit(values)
+      this.props.searchhanld(values.bill.item)
      // console.log(values);
       this.formRef.current.resetFields(); 
     };

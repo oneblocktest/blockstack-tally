@@ -1,6 +1,6 @@
 import React from 'react';
 //import styles from './index.css';
-import { Table, Popconfirm } from 'antd';
+import { Table} from 'antd';
 
 
 
@@ -32,18 +32,19 @@ const Tabledata =(props)=>{
         dataIndex: 'card',
       },
     ]
-    const newsdata =[]
-  /*    // let data=[]
+   // console.log(props.waterbill)
+   // const newsdata =[]
+     // let data=[]
       const data = props.waterbill //变换dataSource数据格式
       const newsdata =[]
       let j = 0
-     // if(data.length>0){
+     if(data.length>0){
       for (let i = data.length - 1; i > -1; i--) {
         newsdata[j] = data[i]
         newsdata[j].key = j
         j++
       }
-   // } */
+    }
     return (
       <div>  
        <Table
