@@ -31,12 +31,11 @@ export default class Setcategory extends Component {
         return (
             <div className={styles.container}>
                 <div id="components-grid-demo-basic">
-                    <>
-                        <Row>
-                            <Chartdata />
+                  
                             
-                        </Row>
-                    </>
+                            <Chartdata waterbill={this.props.waterbill} />
+                            
+                   
                 </div>
                 <div id="components-grid-demo-basic">
                     <>

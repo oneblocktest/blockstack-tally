@@ -7,7 +7,6 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.1.4",
-    "bizcharts": "^4.0.1",
     "blockstack": "^21.0.0",
     "echarts": "^4.7.0",
     "echarts-for-react": "^2.0.15-beta.1",

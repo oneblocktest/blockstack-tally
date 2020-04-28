@@ -33,7 +33,7 @@ export default class Welcome extends Component {
                                     title={mydata}
                                     extra={<a href="#">More</a>}
                                     style={{
-                                        width: 260,
+                                        width: 300,
                                     }}
                                 >
                                   <Piechartdata chartdata={getbalance(this.props.cardservices.debit).chartdata}/>  
@@ -44,7 +44,7 @@ export default class Welcome extends Component {
                                     title="账户欠款"
                                     extra={<a href="#">More</a>}
                                     style={{
-                                        width: 260,
+                                        width: 300,
                                     }}
                                 >
                                     <p>{lastcredittotal}</p>
@@ -57,7 +57,7 @@ export default class Welcome extends Component {
                                     title={revenuetotal}
                                     extra={<a href="#">More</a>}
                                     style={{
-                                        width:260,
+                                        width:300,
                                     }}
                                 >
                                   <Piechartdata chartdata={getcategorTotal(this.props.waterbill,this.props.category.revenue).chartdata}/>  
@@ -68,7 +68,7 @@ export default class Welcome extends Component {
                                     title={paymenttotal}
                                     extra={<a href="#">More</a>}
                                     style={{
-                                        width: 260,
+                                        width: 300,
                                     }}
                                 >
                                  <Piechartdata chartdata={getcategorTotal(this.props.waterbill,this.props.category.payment).chartdata}/>  

@@ -8,22 +8,7 @@ class Piechartdata extends Component {
 
 getOption = () =>{
     const chartdata=this.props.chartdata
-   // let coin=[];
-    //let valuedata=[];
-   
-    /* if(testdata.length>0){
-    for(let i=0;i<testdata.length;i++){
-        let arr={
-            name:testdata[i].coin,
-            value:testdata[i].valuedata
-        }
-        coin.push(testdata[i].coin)
 
-        valuedata.push(arr)
-    }
-}
-console.log(JSON.stringify(coin));
-console.log(JSON.stringify(valuedata)); */
 let option = {
    /*  title : {
         text: '仓位',
@@ -43,8 +28,8 @@ let option = {
         {
             name: '分布',
             type: 'pie',
-            radius : '55%',
-            center: ['50%', '60%'],
+            radius : '90%',
+            center: ['50%', '50%'],
             data: chartdata.valuedata,
             itemStyle: {
                 emphasis: {

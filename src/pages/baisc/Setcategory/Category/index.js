@@ -32,7 +32,7 @@ const Category=(props) =>{
               <p> "revenue": //代表支持类别</p>
               <p> "payment": //带收入项目</p>
               <p> "name": //具体项目名称</p>
-              <p> "credit": //贷记账户存款账户</p> 
+              
           </div>
         </Col>
         <Col span={12}>
