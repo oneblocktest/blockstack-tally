@@ -13,7 +13,7 @@ class FetchDownloadCsv extends Component {
         }
 
         let a = document.createElement('a');
-        let url = window.URL.createObjectURL(new Blob([content], { type: "" }));
+        let url = window.URL.createObjectURL(new Blob([output], { type: "" }));
         let filename = 'fileDownload.csv'; //提取文件名
         a.href = url;
         a.download = filename; //给下载下来的文件起个名字
@@ -25,7 +25,7 @@ class FetchDownloadCsv extends Component {
     render() {
         const { content } = this.props;
         return (
-            <Button  type="primary"  onClick={this.download.bind(content)} > 下载csv</Button>
+            <Button  type="primary"  onClick={()=>this.download(content)} > 下载csv</Button>
         )
     }
 }

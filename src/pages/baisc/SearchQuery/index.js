@@ -44,8 +44,8 @@ export default class Setcategory extends Component {
                         <Row>
                             <Col span={18}> <Tabledata waterbill={this.state.waterbill}/> </Col>
                             <Col span={6}> <Fromdata  searchhanld = { this.searchhanld }/>
-                             {/*    <FetchDownloadJson content={this.props.waterbill}/>
-                                <FetchDownloadCsv content={this.props.waterbill}/> */}
+                                <FetchDownloadJson content={this.props.waterbill}/>
+                                <FetchDownloadCsv content={this.props.waterbill}/>
                             </Col>
                             
                         </Row>

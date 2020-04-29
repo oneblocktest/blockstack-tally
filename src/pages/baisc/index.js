@@ -121,11 +121,11 @@ export default class BasicLayout extends Component {
 
 
      componentWillMount() {
-          //  const { userSession } = this.props;
-         /*   this.setState({
+          // const { userSession } = this.props;
+          /* this.setState({
              person: new Person(userSession.loadUserData().profile),
-            }); */
-          // console.log(this.state.person)
+            });  */
+      //    console.log(this.state.person)
            this.loadMe()
           } 
 
@@ -209,9 +209,7 @@ export default class BasicLayout extends Component {
             <Layout>
             <Sider width={256} style={{ minHeight: '100vh' }}>
                 <div style={{ height: '58px', background: 'rgba(255,255,255,.2)', margin: '16px' }}>
-                <div style={{textAlign: 'center',size:64}}>
-                Tally
-                 </div>
+                <div style={{  display:" flex",textAlign:" center",size:100,color:"#ffffff"}}>Tally </div>
                 </div>
               <Menu theme="dark" mode="inline">
               
@@ -223,7 +221,7 @@ export default class BasicLayout extends Component {
                 <Layout >
                     <Header style={{ background: '#fff', textAlign: 'center', padding: 0 }}>
                             <div style={{ background: '#fff', textAlign: 'right', padding: 0 }}>
-                            <Avatar size="large" icon={<img src={person.avatarUrl()}/> } />
+                            <Avatar size="large" icon={<img src={ person.avatarUrl() ? person.avatarUrl() : avatarFallbackImage }/> } />
                             <Button type="primary"  onClick={handleSignOut.bind(this)} >Logout</Button>
                             </div>                   
                     </Header>
@@ -250,9 +248,10 @@ export default class BasicLayout extends Component {
           if (content) {
             const mytally = JSON.parse(content)
             this.setState({ waterbill:mytally.waterbill, category:mytally.category,cardservices:mytally.cardservices,redirectToMe: false })
-            this.setState({
-              
-             });
+            this.setState({person: new Person(userSession.loadUserData().profile),
+             })
+              console.log(this.state.person)
+            
           } else {
             const me =  [
               {
@@ -267,7 +266,7 @@ export default class BasicLayout extends Component {
           }
         },(err)=>{
           console.log(err)
-          this.setState({redirectToMe: true })
+          this.setState({page: "Setcategory" })
        }) 
     } 
 
