@@ -48,9 +48,7 @@ const getcardservices = (props) => {
 
 class Formdata extends Component {
   formRef = React.createRef();
- // category = { this.props.category }
- // cardservices = { this.props.category }
- 
+
 
 
 
@@ -100,9 +98,6 @@ class Formdata extends Component {
         >
           <Select
             showSearch
-           // onChange={this.handleSecChange}
-            // placeholder="请输入/选择xxx"   
-           // onSearch={this.handleSerach}
           >
             {
               getcategory(this.props).length && getcategory(this.props).map((item, index) => (
@@ -127,9 +122,7 @@ class Formdata extends Component {
         >
           <Select
             showSearch
-           // onChange={this.handleSecChange}
-            // placeholder="请输入/选择xxx"   
-           // onSearch={this.handleSerach}
+           
           >
             {
               getcardservices(this.props).length && getcardservices(this.props).map((item, index) => (

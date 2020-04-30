@@ -33,8 +33,7 @@ const Tabledata =(props)=>{
       },
     ]
    // console.log(props.waterbill)
-   // const newsdata =[]
-     // let data=[]
+  
       const data = props.waterbill //变换dataSource数据格式
       const newsdata =[]
       let j = 0

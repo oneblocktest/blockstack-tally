@@ -12,10 +12,8 @@ import Setcategory from "./Setcategory";
 import Welcome from "./welcome"
 import SearchQuery from "./SearchQuery"
 export const appConfig = new AppConfig(['store_write', 'publish_data'])
-export const WATEBILL_FILENAME = 'waterbill.json'         //gaia保存路径
-export const CATEGORY_FILENAME = 'category.json' 
-export const CARDSERVICES_FILENAME = 'cardservices.json' 
-export const MYTALLY_FILENAME = "MYTALLY.json"
+
+export const MYTALLY_FILENAME = "MYTALLY.json"           //gaia保存路径
 
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 const { Header, Footer, Sider, Content } = Layout;
@@ -120,12 +118,7 @@ export default class BasicLayout extends Component {
 
 
 
-     componentWillMount() {
-          // const { userSession } = this.props;
-          /* this.setState({
-             person: new Person(userSession.loadUserData().profile),
-            });  */
-      //    console.log(this.state.person)
+     componentWillMount() { 
            this.loadMe()
           } 
 
@@ -252,7 +245,7 @@ export default class BasicLayout extends Component {
 
     loadMe() {
       const { userSession } = this.props;
-      const options = { decrypt: false}
+      const options = { decrypt:true}
      
       userSession.getFile(MYTALLY_FILENAME, options)
         .then((content) => {
@@ -278,7 +271,7 @@ export default class BasicLayout extends Component {
           }
         },(err)=>{
           console.log(err)
-          this.setState({page: "Setcategory" })
+          this.setState({page: "frist" })
        }) 
     } 
 
@@ -292,7 +285,7 @@ export default class BasicLayout extends Component {
       }
         const { userSession } = this.props;
         this.setState({ savingMe: true })
-        const options = { encrypt: false }
+        const options = { encrypt: true }
         console.log(JSON.stringify(mytally))     
        userSession.putFile(MYTALLY_FILENAME, JSON.stringify(mytally), options)
           .finally(() => {
