@@ -40,7 +40,7 @@ export default class Welcome extends Component {
                                 </Card>
                             </Col>
                             <Col span={6}>
-                                <Card
+                                <Card rows={4}
                                     title="账户欠款"
                                     extra={<a href="#">More</a>}
                                     style={{
@@ -53,7 +53,7 @@ export default class Welcome extends Component {
                                 </Card>
                             </Col>
                             <Col span={6}>
-                                <Card
+                                <Card rows={4}
                                     title={revenuetotal}
                                     extra={<a href="#">More</a>}
                                     style={{
@@ -64,7 +64,7 @@ export default class Welcome extends Component {
                                 </Card>
                             </Col>
                             <Col span={6}>
-                                <Card
+                                <Card rows={4}
                                     title={paymenttotal}
                                     extra={<a href="#">More</a>}
                                     style={{

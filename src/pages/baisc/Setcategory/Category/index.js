@@ -26,7 +26,7 @@ const Category=(props) =>{
       <Row>
         <Col span={12}>
           <div id="components-input-demo-basic">
-          <label>账户设置:</label>
+          <label>类别设置:</label>
               <p>设置内容以JSON格式：</p>
               <p>例子:</p>
               <p> "revenue": //代表支持类别</p>

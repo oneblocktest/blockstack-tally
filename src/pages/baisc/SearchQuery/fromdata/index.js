@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import 'antd/dist/antd.css';
 import './index.css';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button,Row,Col } from 'antd';
 
 const layout = {
   labelCol: {
@@ -26,20 +26,41 @@ const layout = {
 
 
 class Formdata extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      keyword:""
+    }
+}  
+
+clearbutton(){
+  this.setState({keyword:""})
+  this.props.clearhanld()
+}
+
+  
+
   formRef = React.createRef();
+  
+
 
   render() {
     
     const onFinish = values => {
       this.props.searchhanld(values.bill.item)
+      this.setState({keyword:values.bill.item})
      // console.log(values);
       this.formRef.current.resetFields(); 
     };
-
+     
     return (
+     <Row>
+      <Col span={24}>
+      {"关键词:" + this.state.keyword}
+      </Col>
+       <Col span={24}>
       <Form {...layout} ref={this.formRef} name="nest-messages" onFinish={onFinish} >
         
-       
         <Form.Item
           name={['bill', 'item']}
           label="项目"
@@ -57,7 +78,16 @@ class Formdata extends Component {
            搜索项目
         </Button>
         </Form.Item>
+        
       </Form>
+      </Col>
+      <Col span={24}>
+      <Button type="primary"  onClick={()=>this.clearbutton()}>清除搜索结果</Button>
+      </Col>
+      </Row>
+      
+     
+     
     );
   }
 };

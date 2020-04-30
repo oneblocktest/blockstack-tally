@@ -11,7 +11,6 @@ import {
 import Setcategory from "./Setcategory";
 import Welcome from "./welcome"
 import SearchQuery from "./SearchQuery"
-import { hash128 } from 'blockstack/lib/operations';
 export const appConfig = new AppConfig(['store_write', 'publish_data'])
 export const WATEBILL_FILENAME = 'waterbill.json'         //gaia保存路径
 export const CATEGORY_FILENAME = 'category.json' 
@@ -43,28 +42,28 @@ export default class BasicLayout extends Component {
            waterbill: [
             {
                 date: "20200420",
-                item: "加油",
+                item: "测试数据等待加载中",
                 type: "交通",
                 amount: "-200",
                 card: "农行"
             },
             {
                 date: "20200421",
-                item: "加油",
+                item: "测试数据等待加载中",
                 type: "交通",
                 amount: "-200",
                 card: "农行"
             },
             {
                 date: "20200422",
-                item: "加油",
+                item: "测试数据等待加载中",
                 type: "交通",
                 amount: "-200",
                 card: "农行"
             },
             {
                 date: "20200423",
-                item: "加油",
+                item: "测试数据等待加载中",
                 type: "交通",
                 amount: "-200",
                 card: "农行"
@@ -95,7 +94,7 @@ export default class BasicLayout extends Component {
               {
                 card: "花呗",
                 update: "31", //信用卡账单日期
-                balance: "-11"
+                balance: "0"
               }
             ],
             debit: [ //借记账户
@@ -107,7 +106,7 @@ export default class BasicLayout extends Component {
               {
                 card: "现金",
                 update: "31",
-                balance: "200"
+                balance: "100"
               }
             ]
           },
@@ -195,12 +194,19 @@ export default class BasicLayout extends Component {
             return  <Setcategory category={this.state.category} 
                       cardservices={this.state.cardservices} 
                       sethandlecatchange={this.sethandlecatchange} 
-                      sethandlecardchange={this.sethandlecardchange} />
+                      sethandlecardchange={this.sethandlecardchange}
+                      frist={"old"}/>
         }else if(this.state.page==="SearchQuery"){
             return  <SearchQuery 
             waterbill={this.state.waterbill}
             cardservices={this.state.cardservices}  />
-        }
+        }else if(this.state.page==="frist"){
+          return  <Setcategory category={this.state.category} 
+                    cardservices={this.state.cardservices} 
+                    sethandlecatchange={this.sethandlecatchange} 
+                    sethandlecardchange={this.sethandlecardchange}
+                    frist={"frist"} />
+      }
     }
 
     render() {
@@ -234,7 +240,7 @@ export default class BasicLayout extends Component {
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                           {this.pagezhuan()}
-                    <Button type="primary" onClick={()=>this.saveMe()}>保存</Button>
+                    <Button type="primary" onClick={()=>this.saveMe()}>保存上传gaia</Button>
             </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>Blockstack-Tally ©2020 Created by Tally Team</Footer>

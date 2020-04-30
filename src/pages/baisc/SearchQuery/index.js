@@ -28,6 +28,11 @@ export default class Setcategory extends Component {
         this.setState({waterbill:searchdata})
     }
 
+    clearhanld=()=>{
+        const waterbill=this.props.waterbill
+        this.setState({waterbill:waterbill})
+    }
+
     render() {
        // console.log(this.state.waterbill)
         return (
@@ -43,7 +48,7 @@ export default class Setcategory extends Component {
                     <>
                         <Row>
                             <Col span={18}> <Tabledata waterbill={this.state.waterbill}/> </Col>
-                            <Col span={6}> <Fromdata  searchhanld = { this.searchhanld }/>
+                            <Col span={6}> <Fromdata  searchhanld = { this.searchhanld } clearhanld = { this.clearhanld }/>
                                 <FetchDownloadJson content={this.props.waterbill}/>
                                 <FetchDownloadCsv content={this.props.waterbill}/>
                             </Col>
