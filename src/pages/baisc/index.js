@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu,Button,Avatar,message  } from 'antd';
+import { Layout, Menu,Button,Avatar,message,Row } from 'antd';
 import 'antd/dist/antd.css';
 import './index.css';
 import {
@@ -11,6 +11,7 @@ import {
 import Setcategory from "./Setcategory";
 import Welcome from "./welcome"
 import SearchQuery from "./SearchQuery"
+import { hash128 } from 'blockstack/lib/operations';
 export const appConfig = new AppConfig(['store_write', 'publish_data'])
 export const WATEBILL_FILENAME = 'waterbill.json'         //gaia保存路径
 export const CATEGORY_FILENAME = 'category.json' 
@@ -209,7 +210,12 @@ export default class BasicLayout extends Component {
             <Layout>
             <Sider width={256} style={{ minHeight: '100vh' }}>
                 <div style={{ height: '58px', background: 'rgba(255,255,255,.2)', margin: '16px' }}>
-                <div style={{  display:" flex",textAlign:" center",size:100,color:"#ffffff"}}>Tally </div>
+               
+                <div style={{  display:" flex",textAlign:" center",size:200,color:"#ffffff"}}>
+                <Row type="flex" justify="center" align="middle">
+                <Avatar shape="square" size={60} icon={<img src="./logo512.png"/> } /> Tally
+                </Row>
+                </div>
                 </div>
               <Menu theme="dark" mode="inline">
               
