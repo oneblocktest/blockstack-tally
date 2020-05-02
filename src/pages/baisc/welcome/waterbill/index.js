@@ -118,8 +118,8 @@ const Waterbill =(props)=>{
         dataIndex: 'operation',
         render: (text, record) =>
           newsdata.length >= 1 ? (
-            <Popconfirm title="Sure to delete?" onConfirm={() => {props.removeCharacter(record.key)}}>
-              <a>Delete</a>
+            <Popconfirm title="确定删除吗?" onConfirm={() => {props.removeCharacter(record.key)}}>
+              <a>删除</a>
             </Popconfirm>
           ) : null,
       },
