@@ -114,7 +114,7 @@ const Waterbill =(props)=>{
         dataIndex: 'card',
       },
       {
-        title: 'operation',  //删除键
+        title: '选项',  //删除键
         dataIndex: 'operation',
         render: (text, record) =>
           newsdata.length >= 1 ? (
