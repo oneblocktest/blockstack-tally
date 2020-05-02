@@ -78,18 +78,40 @@ const runningmonth=(waterbill)=>{
 
 //判断日期是否在内
 function isDateCurrentDay(update, mon, date) {
+    
     let momentDate = moment(date)
     let current = moment()
-    let test=current.month()
+    let test=current.month()-mon
     let yeartest=current.year()
-    let startDate= moment(new Date(yeartest,test-1-mon,update))
-    let endDate=moment(new Date(yeartest,test-mon,update))
+  //  let startDate= moment(new Date(yeartest,test-1-mon,update))
+   // let endDate=moment(new Date(yeartest,test-mon,update))
+    if(yeartest==momentDate.year()){
+        if(test==momentDate.month()){
+            if(momentDate.day()<=update){
+                return true
+            }else{
+                return false
+            }
+        }else if(test-1==momentDate.month()){
+            if(momentDate.day()>update){
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }else{
+        return false
+    }
+       
+      
     
-    if (momentDate.isBefore(endDate) && momentDate.isAfter(startDate) || (momentDate.isSame(startDate) || momentDate.isSame(endDate))) {
+   /*  if (momentDate.isBefore(endDate) && momentDate.isAfter(startDate) || (momentDate.isSame(startDate) || momentDate.isSame(endDate))) {
         return true
     } else {
         return false
-    }
+    } */
 }
 
 
